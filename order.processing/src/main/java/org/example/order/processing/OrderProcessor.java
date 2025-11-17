@@ -14,6 +14,8 @@ public class OrderProcessor<T extends Product> {
             System.out.println("Electronics brand: " + electronics.getBrand());
         } else if (product instanceof Clothing clothing) {
             System.out.println("Clothing size: " + clothing.getSize());
+        } else {
+            throw new UnknownProductTypeException("Unsupported product type: " + product.getClass());
         }
     }
 

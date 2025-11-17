@@ -11,6 +11,9 @@ public class OrderStorage {
     private final List<Product> products = new ArrayList<>();
 
     public void addProduct(Product product) {
+        if (product == null) {
+            throw new IllegalArgumentException("Product не може бути null!");
+        }
         products.add(product);
     }
 }
