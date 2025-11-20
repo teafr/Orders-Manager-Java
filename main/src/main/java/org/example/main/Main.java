@@ -28,8 +28,5 @@ public class Main {
         storage.getProducts().forEach(product -> orders.add(new OrderProcessor<>(product)));
 
         ThreadManager.runInParallel(orders);
-
-        orders.stream().filter(orderProcessor -> orderProcessor
-                        .getClass().getSimpleName().contains("Electronics")).forEach(OrderProcessor::processOrder);
     }
 }
