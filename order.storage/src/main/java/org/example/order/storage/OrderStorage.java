@@ -12,7 +12,7 @@ public class OrderStorage {
 
     public void addProduct(Product product) {
         if (product == null) {
-            throw new IllegalArgumentException("Product не може бути null!");
+            throw new IllegalArgumentException("Product не може бути null");
         }
         products.add(product);
     }

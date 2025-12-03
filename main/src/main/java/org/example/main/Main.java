@@ -27,6 +27,13 @@ public class Main {
         List<OrderProcessor<? extends Product>> orders = new ArrayList<>();
         storage.getProducts().forEach(product -> orders.add(new OrderProcessor<>(product)));
 
-        ThreadManager.runInParallel(orders);
+        List<Runnable> tasks = new ArrayList<>();
+
+        storage.getProducts().forEach(product -> {
+            OrderProcessor<?> processor = new OrderProcessor<>(product);
+            tasks.add(processor::process);
+        });
+
+        ThreadManager.runInParallel(tasks);
     }
 }
